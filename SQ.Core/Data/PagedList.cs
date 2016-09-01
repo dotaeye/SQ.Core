@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 
 namespace SQ.Core.Data
 {
@@ -8,7 +9,7 @@ namespace SQ.Core.Data
     /// Paged list
     /// </summary>
     /// <typeparam name="T">T</typeparam>
-    [Serializable]
+    [DataContract]
     public class PagedList<T> : List<T>, IPagedList<T>
     {
         /// <summary>
@@ -67,12 +68,16 @@ namespace SQ.Core.Data
 
             this.PageSize = pageSize;
             this.PageIndex = pageIndex;
-            this.AddRange(source);
+            this.AddRange(source.Skip(pageIndex * pageSize).Take(pageSize).ToList());
         }
 
+        [DataMember]
         public int PageIndex { get; private set; }
+        [DataMember]
         public int PageSize { get; private set; }
+        [DataMember]
         public int TotalCount { get; private set; }
+        [DataMember]
         public int TotalPages { get; private set; }
 
         public bool HasPreviousPage

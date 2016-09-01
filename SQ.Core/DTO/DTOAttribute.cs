@@ -7,6 +7,8 @@ namespace SQ.Core.DTO
     {
         private bool allow = true;
 
+        private bool ignore = false;
+
         private string foreignKeyPropertyName = string.Empty;
 
         private string foreignKeyEntityName = string.Empty;
@@ -14,6 +16,12 @@ namespace SQ.Core.DTO
         public DTOAttribute(bool allow)
         {
             this.allow = allow;
+        }
+
+        public DTOAttribute(bool allow, bool ignore)
+        {
+            this.allow = allow;
+            this.ignore = ignore;
         }
 
         public DTOAttribute(string foreignKeyPropertyName, string foreignKeyEntityName)
@@ -30,6 +38,14 @@ namespace SQ.Core.DTO
             get
             {
                 return allow;
+            }
+        }
+
+        public bool Ignore
+        {
+            get
+            {
+                return ignore;
             }
         }
 
