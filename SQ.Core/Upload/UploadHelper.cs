@@ -12,10 +12,12 @@ namespace SQ.Core.Upload
 {
     public class UploadHelper
     {
-        public static string UpLoadSave(IEnumerable<HttpPostedFileBase> attachments, string status = "upload")
+        public static UploadResult UpLoadSave(IEnumerable<HttpPostedFileBase> attachments, string status = "upload")
         {
             int uploadmaxsize = 10240000;
-            string res = string.Empty;
+
+            var res = new UploadResult();
+
             foreach (var file in attachments)
             {
                 string folder = System.Configuration.ConfigurationManager.AppSettings["FileIntMarketPath"].ToString();
@@ -44,11 +46,19 @@ namespace SQ.Core.Upload
                     Crop(filePath, 120);
                     Crop(filePath, 430);
                     Crop(filePath, 800);
-                    res = string.Format("{{\"err\":\"\",\"imgurl\":\"{0}\",\"imgname\":\"{1}\",\"status\":\"{2}\",\"imgurl_120\":\"{3}\",\"imgurl_800\":\"{4}\"}}", saveUrl, fileName, status, GetImgSaveUrl(folder, fileName, extension, 120), GetImgSaveUrl(folder, fileName, extension, 800));
+                    res = new UploadResult()
+                    {
+                        ImageUrl = saveUrl,
+                        ImageName = fileName,
+                        Status = status,
+                        ImageUrl_120 = GetImgSaveUrl(folder, fileName, extension, 120),
+                        ImageUrl_800 = GetImgSaveUrl(folder, fileName, extension, 800)
+
+                    };
                 }
                 else
                 {
-                    res = string.Format("{{\"err\":\"上传文件大小不能超过{0}K\"}}", uploadMaxLength / 1000);
+                    res.Error = string.Format("上传文件大小不能超过{0}K", uploadMaxLength / 1000);
                 }
             }
             return res;
@@ -79,7 +89,7 @@ namespace SQ.Core.Upload
             return imgPath.Substring(0, imgPath.LastIndexOf('.')) + "_" + tarwidth + ".jpg";
         }
 
-        public static string GetGUIDFolder(string guid)
+        public static string GetDateFolder()
         {
             string folder = string.Format("{0}/{1}/{2}/",
                 DateTime.Now.Year,
@@ -269,6 +279,6 @@ namespace SQ.Core.Upload
             }
             return success;
         }
-       
+
     }
 }
