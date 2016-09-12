@@ -18,6 +18,8 @@ namespace SQ.Core.Upload
 
         public string ImageUrl_120 { get; set; }
 
+        public string ImageUrl_430 { get; set; }
+
         public string ImageUrl_800 { get; set; }
 
 
