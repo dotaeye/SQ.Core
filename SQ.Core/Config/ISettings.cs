@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SQ.Core.Config
 {
-    interface ISettings
+    public interface ISettings
     {
     }
 }

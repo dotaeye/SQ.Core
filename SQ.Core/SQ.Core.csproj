@@ -113,6 +113,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoMapper\BaseProfile.cs" />
+    <Compile Include="CommonHelper.cs" />
+    <Compile Include="ComponentModel\GenericDictionaryTypeConverter.cs" />
+    <Compile Include="ComponentModel\GenericListTypeConverter.cs" />
+    <Compile Include="ComponentModel\WriteLockDisposable.cs" />
     <Compile Include="Config\ISettings.cs" />
     <Compile Include="Config\SQConfig.cs" />
     <Compile Include="Data\ApiListResult.cs" />
