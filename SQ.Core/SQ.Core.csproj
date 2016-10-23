@@ -126,8 +126,10 @@
     <Compile Include="Config\SQConfig.cs" />
     <Compile Include="Data\ApiListResult.cs" />
     <Compile Include="Data\BaseEntity.cs" />
+    <Compile Include="Data\BasePageableModel.cs" />
     <Compile Include="Data\CreateTablesIfNotExist.cs" />
     <Compile Include="Data\AntPageOption.cs" />
+    <Compile Include="Data\IPageableModel.cs" />
     <Compile Include="Data\PageSortTyoe.cs" />
     <Compile Include="Data\QueryableExtensions.cs" />
     <Compile Include="DTO\DTOAttribute.cs" />
