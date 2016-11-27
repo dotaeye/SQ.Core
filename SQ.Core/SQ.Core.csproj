@@ -125,6 +125,7 @@
     <Compile Include="Config\ISettings.cs" />
     <Compile Include="Config\SQConfig.cs" />
     <Compile Include="Data\ApiListResult.cs" />
+    <Compile Include="Data\ApiResult.cs" />
     <Compile Include="Data\BaseEntity.cs" />
     <Compile Include="Data\BasePageableModel.cs" />
     <Compile Include="Data\CreateTablesIfNotExist.cs" />

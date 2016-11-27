@@ -14,6 +14,8 @@ namespace SQ.Core.UI
 
         public string Key { get; set; }
 
+        public string ImageUrl { get; set; }
+
         public string ParentId { get; set; }
 
         public List<Cascader> Children { get; set; }
